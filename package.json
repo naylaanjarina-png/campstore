@@ -12,4 +12,8 @@
         "sass": "^1.56.1",
         "vite": "^4.0.0"
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f122b64 (Fix alat image upload and display)

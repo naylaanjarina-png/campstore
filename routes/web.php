@@ -24,16 +24,6 @@ Route::get('/', function () {
 Route::resource('alat', AlatController::class);
 Route::resource('peminjaman', PeminjamanController::class);
 Route::resource('pengembalian', PengembalianController::class);
-Route::get('/debug-env', function () {
-    return response()->json([
-        'DB_HOST' => env('DB_HOST'),
-        'DB_PORT' => env('DB_PORT'),
-        'DB_DATABASE' => env('DB_DATABASE'),
-        'DB_USERNAME' => env('DB_USERNAME'),
-        'getenv_DB_HOST' => getenv('DB_HOST'),
-        'server_DB_HOST' => $_SERVER['DB_HOST'] ?? null,
-    ]);
-});
 Route::resource('pengelola', PengelolaController::class);
 
 Auth::routes();

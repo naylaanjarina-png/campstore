@@ -54,7 +54,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             @if(!empty($item->foto))
-                                <img src="{{ asset('gambar/'.$item->foto) }}" class="rounded" width="45" height="45" style="object-fit:cover;">
+                                <img src="{{ str_starts_with($item->foto, 'data:image') ? $item->foto : asset('gambar/'.$item->foto) }}" class="rounded" width="45" height="45" style="object-fit:cover;">
                             @else
                                 <div class="bg-light border rounded d-flex align-items-center justify-content-center text-muted" style="width:45px;height:45px;">
                                     <i class="bi bi-image"></i>

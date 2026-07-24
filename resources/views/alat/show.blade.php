@@ -14,7 +14,7 @@
                         <td>
                             <div class="d-flex align-items-center gap-3">
                                 @if(!empty($alat->foto))
-                                    <img src="{{ asset('gambar/'.$alat->foto) }}" class="rounded" width="100" height="100" style="object-fit:cover;">
+                                    <img src="{{ str_starts_with($alat->foto, 'data:image') ? $alat->foto : asset('gambar/'.$alat->foto) }}" class="rounded" width="100" height="100" style="object-fit:cover;">
                                 @else
                                     <div class="bg-light border rounded d-flex align-items-center justify-content-center text-muted" style="width:100px;height:100px;">
                                         <i class="bi bi-image"></i>

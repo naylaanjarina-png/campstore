@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('status', ['tersedia', 'dipinjam', 'perbaikan', 'nonaktif'])->default('tersedia');
             $table->decimal('harga_sewa', 12, 2)->nullable();
             $table->date('tanggal_peminjaman')->nullable();
-            $table->string('foto')->nullable();
+            $table->longText('foto')->nullable();
             $table->text('catatan')->nullable();
             $table->timestamps();
         });

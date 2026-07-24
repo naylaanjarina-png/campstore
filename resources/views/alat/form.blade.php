@@ -56,7 +56,10 @@
         <label class="form-label">Foto</label>
         <input type="file" name="foto" class="form-control" accept="image/*">
         @if(!empty($alat->foto))
-            <small class="text-muted">Foto saat ini: {{ $alat->foto }}</small>
+            <div class="mt-2">
+                <small class="text-muted d-block mb-1">Foto saat ini:</small>
+                <img src="{{ str_starts_with($alat->foto, 'data:image') ? $alat->foto : asset('gambar/'.$alat->foto) }}" class="rounded border" width="60" height="60" style="object-fit:cover;">
+            </div>
         @endif
     </div>
 

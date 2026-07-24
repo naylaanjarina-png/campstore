@@ -48,9 +48,7 @@ class AlatController extends Controller
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('gambar'), $filename);
-            $validated['foto'] = $filename;
+            $validated['foto'] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode(file_get_contents($file->getRealPath()));
         }
 
         Alat::create($validated);
@@ -84,14 +82,8 @@ class AlatController extends Controller
         ]);
 
         if ($request->hasFile('foto')) {
-            if ($alat->foto && file_exists(public_path('gambar/' . $alat->foto))) {
-                unlink(public_path('gambar/' . $alat->foto));
-            }
-
             $file = $request->file('foto');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('gambar'), $filename);
-            $validated['foto'] = $filename;
+            $validated['foto'] = 'data:' . $file->getMimeType() . ';base64,' . base64_encode(file_get_contents($file->getRealPath()));
         }
 
         $alat->update($validated);
@@ -101,9 +93,7 @@ class AlatController extends Controller
 
     public function destroy(Alat $alat)
     {
-        if ($alat->foto) {
-            Storage::disk('public')->delete($alat->foto);
-        }
+        // No need to delete file because it's stored in the database
 
         $alat->delete();
 
